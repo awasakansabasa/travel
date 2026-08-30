@@ -80,6 +80,13 @@ def installed():
 
 def spawn():
     """Jalankan sidecar (detached, log ke /app/openwa/openwa.log)."""
+    # Buang lock profil Chromium yatim (pod lama / crash) — kalau tidak, Chrome menolak
+    # start dgn "profile in use by another computer" (exit code 21) dan QR tak pernah muncul.
+    for stale in ("SingletonLock", "SingletonCookie", "SingletonSocket"):
+        try:
+            (OPENWA_DIR / f"_IGNORE_{SESSION_ID}" / stale).unlink(missing_ok=True)
+        except OSError:
+            pass
     key = api_key()
     webhook = f"http://localhost:8001/api/wa/openwa-webhook?key={key}"
     cmd = [str(BIN), "-p", _port(), "--api-key", key, "--session-id", SESSION_ID,

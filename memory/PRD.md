@@ -172,4 +172,21 @@ attribution tak tersedia via OpenWA; Meta/Google Ads & GA4 masih MOCKED.
   memakai jeda anti-ban begitu provider=openwa. Backlog minor: DELETE/edit broadcast
   draft; heading halaman tidak mengikuti tab aktif (kosmetik).
 
+## Sesi 2026-08-30 (lanjutan) — QR OpenWA SIAP DISCAN
+- User memilih "Scan QR OpenWA". Sidecar dipasang ulang (`cd /app/openwa && yarn install
+  --ignore-engines`, node_modules tak ikut git), provider di-set `openwa`.
+- **BUG akar QR gagal**: Chromium exit code 21 — profil sesi `_IGNORE_rahaza` ter-restore
+  dari repo MEMBAWA `SingletonLock` milik pod lama ("profile in use by another computer").
+  FIX: hapus `Singleton{Lock,Cookie,Socket}` + patch permanen `services/openwa.py::spawn()`
+  (unlink lock yatim sebelum launch → tahan restore pod berikutnya). Catatan: default
+  chromiumArgs OpenWA v5 SUDAH berisi --no-sandbox (bukan penyebabnya); `WA_CHROMIUM_ARGS`
+  di backend/.env + `/app/openwa/cli.config.json` ditambahkan saat diagnosis (redundan
+  tapi tak berbahaya).
+- Hasil: state AUTHENTICATING, QR tampil di Pengaturan → SISTEM → panel OpenWA
+  (badge "Menunggu Scan QR", tombol Restart/Reset Sesi/Test Kirim). MENUNGGU USER scan
+  dgn nomor bisnis. Chat dua-arah via Inbox sudah wired (inbound webhook → lead + Inbox
+  + auto-reply, terverifikasi iteration_103); begitu QR discan, Inbox & Broadcast langsung
+  memakai WA nyata.
+
+
 

@@ -51,7 +51,7 @@ export const OpenWaPanel = () => {
   return (
     <div className="rounded-[10px] border border-[#CDEBD4] bg-[#F2FBF4] p-3" data-testid="wa-openwa-box">
       <p className="mb-2 flex flex-wrap items-center gap-2 text-[12px] font-semibold text-[#127A36]">
-        <Smartphone size={13} /> OpenWA — WhatsApp via Scan QR (Unofficial)
+        <Smartphone size={13} /> OpenWA — WhatsApp via Scan QR
         <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10.5px] font-semibold ${cls}`} data-testid="wa-openwa-status">
           {status?.connected ? <CheckCircle2 size={11} /> : null}{label}
         </span>

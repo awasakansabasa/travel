@@ -1,2 +1,3 @@
-2026/08/30-08:49:13.695 2f41 Creating DB /app/openwa/_IGNORE_rahaza/Default/Site Characteristics Database since it was missing.
-2026/08/30-08:49:13.700 2f41 Reusing MANIFEST /app/openwa/_IGNORE_rahaza/Default/Site Characteristics Database/MANIFEST-000001
+2026/08/30-13:22:03.037 5ae Reusing MANIFEST /app/openwa/_IGNORE_rahaza/Default/Site Characteristics Database/MANIFEST-000001
+2026/08/30-13:22:03.037 5ae Recovering log #3
+2026/08/30-13:22:03.038 5ae Reusing old log /app/openwa/_IGNORE_rahaza/Default/Site Characteristics Database/000003.log 
